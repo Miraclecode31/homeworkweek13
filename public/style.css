@@ -1,0 +1,170 @@
+/* Import Google Font for a fun, bold title */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;700&display=swap');
+
+/* Import a sleek Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;700&display=swap');
+
+/* Glow animation */
+@keyframes glow {
+    0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+    50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); }
+    100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Name (h2) - futuristic and glowing */
+h2 {
+    font-family: 'Orbitron', sans-serif; /* Sci-fi look */
+    font-size: 40px;
+    font-weight: 700;
+    color: #fdfdfd;
+    text-transform: uppercase;
+    animation: glow 2s infinite alternate ease-in-out, fadeIn 1s ease-in-out;
+    margin-top: 20px;
+}
+
+/* High School (p) - elegant and modern */
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Fullscreen background with a dimmed purple gradient overlay */
+#schoolPic {
+    position: fixed; /* Fullscreen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+
+    /* Background image setup */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply; /* Blend image with gradient */
+    background-color: rgb(126, 126, 126); /* Dimmed purple */
+    background-image: linear-gradient(135deg, rgba(106, 17, 203, 1), rgba(37, 117, 252, 0.6));
+}
+
+/* Stylish Title */
+h1 {
+    font-family: 'Lobster', cursive; /* Fun and bold font */
+    font-size: 64px; /* Large size */
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+/* Subtitles & Description */
+h2, p {
+    font-family: 'Poppins', sans-serif; /* Modern and clean */
+    font-weight: 400;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Profile picture with 1:1 aspect ratio, circular shape */
+#profilePic {
+    width: 150px; /* Ensures 1:1 ratio */
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; /* Keeps aspect ratio without distortion */
+    border: 4px solid white; /* Optional border */
+    margin-top: 20px;
+}
+
+/* Stylish Button */
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+/* Style list */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Styling the floating buttons */
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    animation: float 3s ease-in-out infinite; /* Apply floating effect */
+}
+
+/* Positioning the buttons */
+button:nth-child(2) {
+    top: 50%;
+    left: 40%;
+    animation-delay: 0s; /* Filmon starts floating immediately */
+}
+
+button:nth-child(3) {
+    top: 50%;
+    left: 55%;
+    animation-delay: 1s; /* James starts floating slightly later */
+}
+
+button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
