@@ -3,11 +3,17 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const port = 3006;
+
 // Enable CORS for all routes
 app.use(cors());
+
+// Middleware to parse JSON bodies from incoming requests
+app.use(express.json());
+
 // Serve the HTML file
 app.use(express.static(path.join(__dirname, 'public')));
-// Define the '/james' route
+
+// Define the '/james' route (GET request)
 app.get('/james', (req, res) => {
   const JamesData = {
     name: 'James Presley',
@@ -19,21 +25,32 @@ app.get('/james', (req, res) => {
   res.json(JamesData);
 });
 
-// Define the '/james' route
+// Define the '/filmon' route (GET request)
 app.get('/filmon', (req, res) => {
-    const filmonData = {
-      name: 'Filmon Abraha',
-      school: 'Walnut Ridge High School',
-      gradYear: 2003,
-      profilePic: 'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
-      schoolPic: 'https://images.unsplash.com/photo-1561330046-5d7e53492f23?q=80&w=3948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    };
-    res.json(filmonData);
-  });
+  const filmonData = {
+    name: 'Filmon Abraha',
+    school: 'Walnut Ridge High School',
+    gradYear: 2003,
+    profilePic: 'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg',
+    schoolPic: 'https://images.unsplash.com/photo-1561330046-5d7e53492f23?q=80&w=3948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  };
+  res.json(filmonData);
+});
 
+// Define the '/addPerson' route (POST request)
+app.post('/addPerson', (req, res) => {
+  const person = req.body;  // Get the JSON data sent in the request body
+  console.log(person);  // Log the received data for debugging purposes
+  
+  // Send a response back with the received data
+  res.json({ message: 'Person added successfully', data: person });
+});
+
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
 // const express = require('express')
 // const app = express()
 // const port = 3000
