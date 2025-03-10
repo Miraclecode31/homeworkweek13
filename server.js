@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const  { LocalStorage } = require ('node-localstorage')
 const path = require('path');
 const app = express();
 const port = 3006;
@@ -9,9 +10,10 @@ app.use(cors());
 
 // Middleware to parse JSON bodies from incoming requests
 app.use(express.json());
-
-// Serve the HTML file
 app.use(express.static(path.join(__dirname, 'public')));
+
+const localStorage = new LocalStorage('./storage')
+let people = JSON.parse(localStorage.getItem('people')) || [];
 
 // Define the '/james' route (GET request)
 app.get('/james', (req, res) => {
@@ -40,10 +42,13 @@ app.get('/filmon', (req, res) => {
 // Define the '/addPerson' route (POST request)
 app.post('/addPerson', (req, res) => {
   const person = req.body;  // Get the JSON data sent in the request body
-  console.log(person);  // Log the received data for debugging purposes
+  people.push(person)
+  localStorage.setItem('people',JSON.stringify(people))
+  res.send("Person Added!")
+  // console.log(person);  // Log the received data for debugging purposes
   
   // Send a response back with the received data
-  res.json({ message: 'Person added successfully', data: person });
+  // res.json({ message: 'Person added successfully', data: person });
 });
 
 // Start the server
